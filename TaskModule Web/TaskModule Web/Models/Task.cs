@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace TaskModule_Web.Models
     public class UserTask
     {
         //UserTaskModel
+        [Key]
         public int Id { get; set; }
         public int Name { get; set; }
         //At First , Task is in incomplete state

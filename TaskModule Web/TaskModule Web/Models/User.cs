@@ -11,6 +11,7 @@ namespace TaskModule_Web.Models
 
 
         //User Model
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
