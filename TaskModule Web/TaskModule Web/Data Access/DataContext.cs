@@ -9,9 +9,9 @@ namespace TaskModule_Web.Data_Access
 {
     public class DataContext : DbContext
     {
-        public DataContext() : base("DefaultConnection")
+        public DataContext() : base("newtest")
         { }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
         public DbSet<UserTask> Tasks { get; set; }
     }
 }

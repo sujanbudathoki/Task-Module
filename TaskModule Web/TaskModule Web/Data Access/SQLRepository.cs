@@ -7,14 +7,16 @@ using TaskModule_Web.Repositories;
 
 namespace TaskModule_Web.Data_Access
 {
-    public class SQLRepository<T> : IRepository<T> where T : class
+    public class SQLRepository<T> : IRepository<T> where T :class
     {
         internal DataContext context;
         internal DbSet<T> dbset;
-        public SQLRepository()
+        public SQLRepository(DataContext context)
             {
             this.dbset = context.Set<T>();
+            this.context = context;
             }
+        
 
         public IQueryable<T> Collection()
         {
