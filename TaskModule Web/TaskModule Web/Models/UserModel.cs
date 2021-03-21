@@ -10,7 +10,7 @@ namespace TaskModule_Web.Models
     {
 
 
-        //Customer Model
+        //User Model
         
         public int Id { get; set; }
         [Required]
@@ -20,7 +20,8 @@ namespace TaskModule_Web.Models
        
       
         [DataType(DataType.PhoneNumber)]
-        public int Phone { get; set; }
+     
+        public double Phone { get; set; }
        
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

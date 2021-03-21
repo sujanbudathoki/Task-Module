@@ -37,7 +37,7 @@ namespace TaskModule_Web.Controllers
             {
                 FormsAuthentication.SetAuthCookie(userlogindata.Email, false);
                 return RedirectToAction("Index","Task");
-                //Routing user value into Task controller .
+               
             }
             else
             {
@@ -66,8 +66,17 @@ namespace TaskModule_Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _users.Insert(model);
-                _users.Commit();
+                //Avoiding e-mail duplication
+                if (_users.Collection().Any(x => x.Email == model.Email))
+                {
+                    ModelState.AddModelError("", "E-mail has been already taken");
+                    return View();
+                }
+                else
+                {
+                    _users.Insert(model);
+                    _users.Commit();
+                }
             }
             else
             { return View(); }

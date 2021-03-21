@@ -17,14 +17,12 @@ namespace TaskModule_Web.Models
         public string Description { get; set; }
         //At First , Task is in incomplete state
         public bool IsComplete { get; set; } = false;
+        public bool IsAssign { get; set; }
         //Foreign Key of CustomerID
         [ForeignKey(nameof(Usermodel))]
         public int UserId { get; set; }
         public UserModel Usermodel { get; set; }
         //To avoid datetime2 to datetime error
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? CreatedOn { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime? Deadline { get; set; }
+        
     }
 }

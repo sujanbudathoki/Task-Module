@@ -193,3 +193,5 @@ F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_We
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule Web.csprojAssemblyReference.cache
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn123.resources
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn1231.resources
+F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.update.resources
+F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.a11.resources

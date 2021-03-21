@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateNewTask")
+    @Html.ActionLink("Create New", "CreateNewTask") / @Html.ActionLink("AssignedTaskList","AssignedTaskList") / 
+    @Html.ActionLink("CompletedTask","CompletedTaskList")
 </p>
 <table class="table table-bordered">
     <tr>
@@ -33,9 +34,10 @@
             @if(item.IsComplete)
             {
                 <p>Completed</p>
-            }else if (item.Deadline == null)
+            }else if (!item.IsAssign)
             {
                 <p>UnAssigned</p>
+                <button class="btn-dark">@Html.ActionLink("Assign","Assign",new { id = item.Id})</button>
             }
             else
             {
@@ -50,9 +52,9 @@
 
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+          <button class="alert-heading">  @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button>|
+          <button class="alert-light">  @Html.ActionLink("Details", "Details", new { id = item.Id }) </button> |
+           <button class="alert-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
         </td>
     </tr>
 }

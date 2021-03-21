@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TaskModule_Web.Models.UserTask>
+
+@{
+    ViewBag.Title = "CompletedTaskList";
+}
+
+<h2>CompletedTaskList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateNewTask")/ @Html.ActionLink("My task List","Index") / @Html.ActionLink("AssignedTaskList", "AssignedTaskList") /
+    @Html.ActionLink("CompletedTask", "CompletedTaskList")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+          Status
+         </th>
+        
+        <th>
+            Actions
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @if(item.IsComplete)
+            {
+                <p class="alert-secondary">Completed</p>
+            }
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
