@@ -23,6 +23,9 @@
             Status
         </th>
         <th>
+            DeadLine
+        </th>
+        <th>
            Actions
         </th>
         
@@ -43,6 +46,7 @@
             else {<p class="alert-danger">Incomplete</p>
             <p class="btn btn-warning">@Html.ActionLink("Tick-Complete","CompleteTask",new { id = item.Id})</p>
             }</td>
+        <td>@Html.DisplayFor(modelitem=>item.Deadline)</td>
         <td>
         
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using TaskModule_Web.Models;
 using TaskModule_Web.Repositories;
 
 namespace TaskModule_Web.Data_Access
 {
     public class SQLRepository<T> : IRepository<T> where T :class
     {
-        internal DataContext context;
+        //internal DataContext context;
+        //using ado.net model
+        internal newDbEntities2 context;
+
         internal DbSet<T> dbset;
-        public SQLRepository(DataContext context)
+        public SQLRepository(newDbEntities2 context)
             {
             this.dbset = context.Set<T>();
             this.context = context;

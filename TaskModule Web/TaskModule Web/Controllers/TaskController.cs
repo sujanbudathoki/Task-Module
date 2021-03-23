@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TaskModule_Web.Models;
 using TaskModule_Web.Repositories;
+using TaskModule_Web.ViewModels;
 
 namespace TaskModule_Web.Controllers
 {
@@ -49,6 +50,8 @@ namespace TaskModule_Web.Controllers
                     Description = tasks.Description,
                     UserId = Lin_User.Id,
                     IsComplete = false,
+                    CreatedAt = DateTime.Now
+                    
                     
                    
                 };
@@ -140,22 +143,44 @@ namespace TaskModule_Web.Controllers
                 return HttpNotFound();
             }
         }
-
         public ActionResult Assign(int Id)
         {
             UserTask task = _tasks.Collection().Where(x => x.Id == Id).FirstOrDefault();
-            task.IsAssign = true;
-            _tasks.Edit(task);
-            _tasks.Commit();
-            return View();
+            return View(task);
+        }
+        [HttpPost]
+        public ActionResult Assign(UserTask editedtask,int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                UserTask task = _tasks.Collection().Where(x => x.Id == Id).FirstOrDefault();
+                double timespan = (task.CreatedAt - editedtask.Deadline).Value.Hours;
+                 if(timespan>0)//ie Created at is greater which means deadline is somewhat before which is invalid.
+                {
+                    ModelState.AddModelError("", "Deadline invalid , seems past date");
+                    return View();
+                }
+                task.IsAssign = true;
+                task.Deadline = editedtask.Deadline;
+                _tasks.Edit(task);
+                _tasks.Commit();
+            }
+            return View("AssignedMessage");
 
         }
+        public ActionResult AssignedMessage()
+        {
+            return View();
+        }
+
 
         //return lists of asssigned tasks
         public ActionResult AssignedTaskList()
         {
             UserModel Lin_User = _customers.Collection().Where(x => x.Email == User.Identity.Name).FirstOrDefault();
-            IEnumerable<UserTask> tasks = _tasks.Collection().Where(x => x.UserId == Lin_User.Id && x.IsAssign==true).ToList();
+            
+            IEnumerable < UserTask > tasks = _tasks.Collection().Where(x => x.UserId == Lin_User.Id && x.IsAssign == true).ToList();
             return View(tasks);
 
         }

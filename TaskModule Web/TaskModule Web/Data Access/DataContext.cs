@@ -9,6 +9,7 @@ namespace TaskModule_Web.Data_Access
 {
     public class DataContext : DbContext
     {
+        //For code first approach
         public DataContext() : base("newtest")
         { }
         public DbSet<UserModel> Users { get; set; }

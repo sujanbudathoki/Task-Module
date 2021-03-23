@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="newDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="UserModels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="float" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserTasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="IsComplete" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsAssign" Type="bit" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Deadline" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_dbo_CustomerTasks_dbo_Customers_UserId">
+    <End Role="UserModels" Type="Self.UserModels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserTasks" Type="Self.UserTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserModels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTasks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="newDbModelStoreContainer">
+    <EntitySet Name="UserModels" EntityType="Self.UserModels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTasks" EntityType="Self.UserTasks" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_CustomerTasks_dbo_Customers_UserId" Association="Self.FK_dbo_CustomerTasks_dbo_Customers_UserId">
+      <End Role="UserModels" EntitySet="UserModels" />
+      <End Role="UserTasks" EntitySet="UserTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

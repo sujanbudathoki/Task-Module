@@ -184,14 +184,4 @@ F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\bin\Unity.Mvc.dll
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\bin\WebActivatorEx.dll
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\bin\System.Threading.Tasks.Extensions.xml
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\bin\Unity.Mvc.pdb
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.ss12.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule Web.csproj.GenerateResource.cache
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.new3456.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn1245.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn3456.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn34561.resources
 F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule Web.csprojAssemblyReference.cache
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn123.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.nn1231.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.update.resources
-F:\Task Module\Task-Module\TaskModule Web\TaskModule Web\obj\Debug\TaskModule_Web.Migrations.a11.resources

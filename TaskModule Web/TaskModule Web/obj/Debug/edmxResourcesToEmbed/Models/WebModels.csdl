@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="newDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="Double" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserTasks" Relationship="Self.FK_dbo_CustomerTasks_dbo_Customers_UserId" FromRole="UserModels" ToRole="UserTasks" />
+  </EntityType>
+  <EntityType Name="UserTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsComplete" Type="Boolean" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAssign" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserModel" Relationship="Self.FK_dbo_CustomerTasks_dbo_Customers_UserId" FromRole="UserTasks" ToRole="UserModels" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Deadline" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_dbo_CustomerTasks_dbo_Customers_UserId">
+    <End Role="UserModels" Type="Self.UserModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserTasks" Type="Self.UserTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserModels">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTasks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="newDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserModels" EntityType="Self.UserModel" />
+    <EntitySet Name="UserTasks" EntityType="Self.UserTask" />
+    <AssociationSet Name="FK_dbo_CustomerTasks_dbo_Customers_UserId" Association="Self.FK_dbo_CustomerTasks_dbo_Customers_UserId">
+      <End Role="UserModels" EntitySet="UserModels" />
+      <End Role="UserTasks" EntitySet="UserTasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
